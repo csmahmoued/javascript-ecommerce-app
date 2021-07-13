@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color:#F1F1F1 ;
+}
+.container{
+    width: 70%;
+    margin: auto;
+}
+ul{
+    list-style: none;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+ul li{
+    border: 1px solid #ddd;
+    margin: 5px;
+    background-color: #fff;
+}
+
+ul li p{
+   margin-left: 10px;
+   font-size: larger;
+} 
