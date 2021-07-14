@@ -226,14 +226,13 @@ background-color: #FED430;
 }
 
 .img-desc{
-    border: 1px solid rebeccapurple;
     position: absolute;
     right: 30px;
-    top: 30px;
-    height: 200px;
+    top: 20px;
+    height: 220px;
     border-radius: 20px;
     width: 400px;
-    padding: 20px;
+    padding: 5px;
     font-size: large;
     font-family: cursive;
 }

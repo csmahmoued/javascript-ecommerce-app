@@ -35,7 +35,7 @@ var data=new XMLHttpRequest();
      var id=dpers[i].id;
      var t=dpers[i].title;
      temp +=` <div class="item">
-     <img class="img-box" src="`+dpers[i].image+`" onclick='getImgDesc(dpers[i].description)'/>
+     <img class="img-box" src="`+dpers[i].image+`"  onclick="getImgDesc('${p}')"/>
      <p>`+t+`</p>
      <span class="price-span">`+dpers[i].price+`$</span>
      <span class="btn-buy" onclick='getPrice(${price},${id},dpers[i].title)'>add to cart</span>
