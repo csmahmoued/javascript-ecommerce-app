@@ -1,0 +1,24 @@
+{
+  "name": "clothes-store",
+  "version": "1.0.0",
+  "description": "A store application",
+  "main": "index.html",
+  "scripts": {
+    "test": "",
+	"script":"https://github.com/csmahmoued/javascript-ecommerce-app/blob/main/js/script.js"
+  },
+  "author": "mahmoud ibrahim",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csmahmoued/javascript-ecommerce-app.git"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "https://github.com/csmahmoued/javascript-ecommerce-app.git",
+  "keywords": [
+    "express",
+    "server"
+  ]
+}
