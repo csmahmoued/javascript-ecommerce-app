@@ -1,21 +1,13 @@
 /****** slide  *** *** */
-var imgArr=["/images/productg1.JPG","/images/productg2.jpg","/images/productg3.JPG"];
-var i=0; var x;
-document.getElementsByClassName("cc")[0].src="/images/productg1.JPG";
-function start(){
-     x=setInterval(function(){
-        
-        i++;
-       if(i>2)
-        {
-        i=0;
-        }
-        
-         document.getElementsByClassName("cc")[0].src=imgArr[i];
-           },2000);
-    
-}
-start();
+let imgArr=["/images/productg1.JPG","/images/productg2.jpg","/images/productg3.JPG"];
+let gslides=document.querySelector(".slide");
+
+    setInterval(()=>{
+        let RandomNumber=Math.floor(Math.random() * imgArr.length);
+        gslides.style.backgroundImage='url("'+imgArr[RandomNumber]+'")';
+       
+    },2000);
+
 
 
 /*******  end slide */
@@ -30,7 +22,6 @@ var data=new XMLHttpRequest();
      if(data.status== 200 && data.readyState== 4)
      {
         dpers=JSON.parse(data.response);
-        console.log(dpers);
         display();
      }
  }
@@ -44,14 +35,13 @@ var data=new XMLHttpRequest();
      var id=dpers[i].id;
      var t=dpers[i].title;
      temp +=` <div class="item">
-     <img src="`+dpers[i].image+`"/>
+     <img class="img-box" src="`+dpers[i].image+`" onclick='getImgDesc(dpers[i].description)'/>
      <p>`+t+`</p>
-     <p>`+dpers[i].price+`$</p>
-     <button class="btn-buy" onclick='getPrice(${price},${id},dpers[i].title)' type="button">Add To Cart</button>
+     <span class="price-span">`+dpers[i].price+`$</span>
+     <span class="btn-buy" onclick='getPrice(${price},${id},dpers[i].title)'>add to cart</span>
  </div>`
  }
- console.log(temp);
- document.getElementById("f").innerHTML = temp ;
+ document.querySelector(".f").innerHTML = temp ;
 }
 var c;
 var i;
@@ -94,17 +84,69 @@ function getPrice(price,id,title){
 }
 document.getElementById("cart-item-counter").innerHTML=localStorage.getItem("item-count");
 
+///**** Start Fixed Header *****  */
 
-function fixHeader(){
+window.addEventListener('scroll',(e)=>{
+  let h=document.querySelector(".header-main");
 
-   document.getElementById("head").setAttribute("class","head header-main")
-}
+  h.classList.toggle("head",window.scrollY > 0);
+});
+
+/*****  End Fixed Header */
 
 
-function displayMenu(){
-    document.getElementById("myDropdown").classList.toggle("show");
-
-}
 
 
 /** end of all products */
+
+
+
+/*****  */
+let imgDesciption;
+function getImgDesc(desc){
+    imgDesciption=desc;
+}   
+document.body.addEventListener('click',(e)=>{
+    if(e.target.className=="img-box"){
+        let overlay=document.createElement("div");
+        overlay.className="body-overlay";
+        document.body.appendChild(overlay);
+
+
+        let popupBox=document.createElement("div");
+        let ImgDedc=document.createElement("p");
+
+            ImgDedc.innerHTML=imgDesciption;
+
+        popupBox.className="popup-box";
+        let imgPop=document.createElement("img");
+            imgPop.className="resize-imgpop"
+            ImgDedc.className="img-desc";
+
+        imgPop.src=e.target.src;
+        popupBox.appendChild(imgPop);
+        popupBox.appendChild(ImgDedc);
+
+        document.body.appendChild(popupBox);
+
+         let spanNode=document.createElement("span");
+         spanNode.className="span-box";
+         let txtBtn=document.createTextNode("X");
+ 
+         spanNode.appendChild(txtBtn);
+ 
+         popupBox.appendChild(spanNode);
+
+         
+        
+    }
+})
+
+
+document.body.addEventListener('click',(e)=>{
+    if(e.target.classList=="span-box"){
+        document.querySelector(".popup-box").remove();
+        document.querySelector(".body-overlay").remove();
+    }
+});
+
